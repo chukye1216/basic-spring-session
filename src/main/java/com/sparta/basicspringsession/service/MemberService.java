@@ -1,5 +1,6 @@
 package com.sparta.basicspringsession.service;
 
+import com.sparta.basicspringsession.dto.MemberDetailResponseDto;
 import com.sparta.basicspringsession.dto.MemberSaveRequestDto;
 import com.sparta.basicspringsession.dto.MemberSaveResponseDto;
 import com.sparta.basicspringsession.dto.MemberSimpleResponseDto;
@@ -32,5 +33,11 @@ public class MemberService {
             memberSimpleResponseDtos.add(new MemberSimpleResponseDto(member.getId(), member.getName()));
         }
         return memberSimpleResponseDtos;
+    }
+
+    public MemberDetailResponseDto getMember(Long memberID){
+        Member member = memberRepository.findById(memberID).orElseThrow(()-> new NullPointerException("찾는 멤버가 없습니다."));
+
+        return new MemberDetailResponseDto(member.getId(), member.getName());
     }
 }
