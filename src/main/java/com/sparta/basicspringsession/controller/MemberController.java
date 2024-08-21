@@ -1,9 +1,6 @@
 package com.sparta.basicspringsession.controller;
 
-import com.sparta.basicspringsession.dto.MemberDetailResponseDto;
-import com.sparta.basicspringsession.dto.MemberSaveRequestDto;
-import com.sparta.basicspringsession.dto.MemberSaveResponseDto;
-import com.sparta.basicspringsession.dto.MemberSimpleResponseDto;
+import com.sparta.basicspringsession.dto.*;
 import com.sparta.basicspringsession.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -30,5 +27,11 @@ public class MemberController {
     public ResponseEntity<MemberDetailResponseDto> getMember(@PathVariable Long memberID){
         return ResponseEntity.ok(memberService.getMember(memberID));
     }
+
+    @PutMapping("/members/{memberID}")
+    public ResponseEntity<MemberUpdateResponseDto> updateMember(@PathVariable Long memberID, MemberUpdateRequsetDto memberUpdateRequsetDto){
+        return ResponseEntity.ok(memberService.updateMember(memberID, memberUpdateRequsetDto));
+    }
+
 
 }

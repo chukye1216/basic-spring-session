@@ -19,4 +19,7 @@ public class Member {
         this.name=name;
     }
 
+    public void update(String name){
+        this.name=name;
+    }
 }
