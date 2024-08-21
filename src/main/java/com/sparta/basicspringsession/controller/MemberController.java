@@ -24,14 +24,18 @@ public class MemberController {
     }
 
     @GetMapping("/members/{memberID}")
-    public ResponseEntity<MemberDetailResponseDto> getMember(@PathVariable Long memberID){
+    public ResponseEntity<MemberDetailResponseDto> getMember(@PathVariable Long memberID) {
         return ResponseEntity.ok(memberService.getMember(memberID));
     }
 
     @PutMapping("/members/{memberID}")
-    public ResponseEntity<MemberUpdateResponseDto> updateMember(@PathVariable Long memberID, MemberUpdateRequsetDto memberUpdateRequsetDto){
+    public ResponseEntity<MemberUpdateResponseDto> updateMember(@PathVariable Long memberID, MemberUpdateRequsetDto memberUpdateRequsetDto) {
         return ResponseEntity.ok(memberService.updateMember(memberID, memberUpdateRequsetDto));
     }
 
+    @DeleteMapping("/members/{memberID}")
+    public void deleteMember(@PathVariable Long memberID) {
+        memberService.deleteMember(memberID);
+    }
 
 }
